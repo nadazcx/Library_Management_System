@@ -1,0 +1,56 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<?import java.net.URL?>
+<AnchorPane xmlns="http://javafx.com/javafx/16"  prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.SigninController">
+
+
+    <VBox id="signin-form" alignment="CENTER" spacing="10"  >
+        <Label text="Inscription" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+        <HBox spacing="5">
+            <Label text="Firstname:"/>
+            <TextField fx:id="firstNameTextField"/>
+            <Text fx:id="firstNameErrorText"  />
+
+        </HBox>
+        <HBox spacing="5">
+            <Label text="LastName:"/>
+            <TextField fx:id="lastNameTextField"/>
+            <Text fx:id="lastNameErrorText"  />
+        </HBox>
+
+        <HBox spacing="5">
+            <Label text="Email:"/>
+            <TextField fx:id="emailTextField"/>
+            <Text fx:id="emailErrorText"  />
+
+        </HBox>
+
+        <HBox spacing="5">
+            <Label text="Password:"/>
+            <PasswordField fx:id="passwordField"/>
+            <Text fx:id="passwordErrorText"  />
+        </HBox>
+
+        <HBox spacing="5">
+            <Label text="CIN:"/>
+            <TextField fx:id="cinTextField"/>
+            <Text fx:id="cinErrorText" />
+        </HBox>
+
+        <HBox spacing="5">
+            <Label text="Birth Date:"/>
+            <DatePicker fx:id="datePicker"/>
+        </HBox>
+
+        <Button text="Sign In" onAction="#signIn"/>
+        <Button text="Login In" onAction="#redirectToLogInScreen"/>
+
+    </VBox>
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+</AnchorPane>
