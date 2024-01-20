@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane  prefHeight="700.0" prefWidth="900.0" stylesheets="@app/cssfilepath.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.EditBookController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" stylesheets="@app/cssfilepath.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.EditBookController">
 
-   <VBox layoutX="87.0" layoutY="171.0" prefHeight="444.0" prefWidth="712.0">
-      <TableView id="table-view-edit" fx:id="booksTableView" prefHeight="427.0" prefWidth="797.0">
+   <VBox layoutX="22.0" layoutY="183.0" prefHeight="487.0" prefWidth="858.0">
+      <TableView id="table-view-edit" fx:id="booksTableView" prefHeight="512.0" prefWidth="858.0">
          <columns>
-            <TableColumn fx:id="isbnColumn" prefWidth="178.79999160766602" text="ISBN" />
-            <TableColumn fx:id="titleColumn" prefWidth="179.59996032714844" text="Book Title" />
-            <TableColumn fx:id="authorColumn" prefWidth="128.5999755859375" text="Author" />
-            <TableColumn fx:id="typeColumn" prefWidth="159.20001220703125" text="Type" />
+            <TableColumn fx:id="isbnColumn" prefWidth="122.20001220703125" text="ISBN" />
+            <TableColumn fx:id="titleColumn" prefWidth="225.5999755859375" text="Book Title" />
+            <TableColumn fx:id="authorColumn" prefWidth="180.0" text="Author" />
+            <TableColumn fx:id="typeColumn" prefWidth="270.5999755859375" text="Type" />
 
 
 
@@ -21,32 +23,51 @@
       </TableView>
    </VBox>
 
-    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="102.0" prefHeight="1.0" prefWidth="158.0" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Recherche Avancée " textAlignment="JUSTIFY" />
-
-    <Pane layoutX="127.0" layoutY="128.0" prefHeight="34.0" prefWidth="626.0">
+    <Pane layoutX="46.0" layoutY="128.0" prefHeight="42.0" prefWidth="800.0">
 
        <children>
-          <TextField fx:id="searchTextField" onKeyReleased="#handleSearch" prefWidth="186.0" promptText="titre" />
-          <TextField fx:id="searchTextISBNField" layoutX="200.0" onKeyReleased="#handleISBN" prefWidth="186.0" promptText="ISBN" />
-          <TextField fx:id="searchTextTypeField" layoutX="408.0" onKeyReleased="#handleType" prefWidth="186.0" promptText="type" />
+          <TextField fx:id="searchTextField" onKeyReleased="#handleSearch" prefWidth="186.0" text="titre" />
+          <TextField fx:id="searchTextISBNField" layoutX="200.0" onKeyReleased="#handleISBN" prefWidth="186.0" text="ISBN" />
+          <TextField fx:id="searchTextTypeField" layoutX="408.0" onKeyReleased="#handleType" prefWidth="186.0" text="type" />
 
       </children>
    </Pane>
-    <MenuBar prefHeight="26.0" prefWidth="900.0">
+    <MenuBar id="MenuBaradd" prefHeight="38.0" prefWidth="900.0">
         <menus>
             <Menu mnemonicParsing="false" text="Manage Books">
+                <graphic>
+                    <ImageView fitHeight="183.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../Image/books.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
                 <items>
-                    <MenuItem mnemonicParsing="true" onAction="#redirectToAddBook" text="add book" />
-                    <MenuItem mnemonicParsing="false" text="edit book" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToAddBook" text="Add Book" />
+                    <MenuItem mnemonicParsing="false" text="Edit Book" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Manage Users">
+                <graphic>
+                    <ImageView fitHeight="53.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../Image/boy-book.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
                 <items>
-                    <MenuItem mnemonicParsing="true" onAction="#redirectToAddUser" text="add  User" />
-                    <MenuItem mnemonicParsing="false" onAction="#redirectToEditUser" text="edit User" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToAddUser" text="Add Users" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToEditUser" text="Edit User" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Manage Loans">
+                <graphic>
+                    <ImageView fitHeight="183.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../Image/loan.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
                 <items>
                     <MenuItem mnemonicParsing="false" onAction="#redirectToNewLoan" text="New Loan" />
                     <MenuItem mnemonicParsing="false" onAction="#redirectToReturnBook" text="return Book" />
@@ -54,5 +75,10 @@
             </Menu>
         </menus>
     </MenuBar>
+   <Label layoutX="46.0" layoutY="96.0" prefHeight="18.0" prefWidth="153.0" text="Advanced search" textFill="#262626e7">
+      <font>
+         <Font name="Arial" size="19.0" />
+      </font>
+   </Label>
 
 </AnchorPane>

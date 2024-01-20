@@ -4,23 +4,46 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane id="anchorpaneuser" prefHeight="700" prefWidth="900.0" stylesheets="@app/cssfilepath.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.AddUserController">
 
-    <MenuBar prefHeight="26.0" prefWidth="900.0">
+    <MenuBar id="MenuBaradd"  prefHeight="38.0" prefWidth="900.0">
         <menus>
             <Menu mnemonicParsing="false" text="Manage Books">
+                <graphic>
+                    <ImageView fitHeight="183.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../Image/books.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
                 <items>
-                    <MenuItem mnemonicParsing="true" onAction="#redirectToAddBook" text="add book" />
-                    <MenuItem mnemonicParsing="false" onAction="#redirectToEditBook" text="edit book" />
+                    <MenuItem mnemonicParsing="false" text="Add Book" onAction="#redirectToAddBook" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToEditBook" text="Edit Book" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Manage Users">
+                <graphic>
+                    <ImageView fitHeight="53.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../Image/boy-book.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
                 <items>
-                    <MenuItem mnemonicParsing="true" onAction="#redirectToAddUser" text="add User" />
-                    <MenuItem mnemonicParsing="false" onAction="#redirectToEditUser" text="edit User" />
+                    <MenuItem mnemonicParsing="false"  text="Add Users" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToEditUser" text="Edit User" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Manage Loans">
+                <graphic>
+                    <ImageView fitHeight="183.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../Image/loan.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
                 <items>
                     <MenuItem mnemonicParsing="false" onAction="#redirectToNewLoan" text="New Loan" />
                     <MenuItem mnemonicParsing="false" onAction="#redirectToReturnBook" text="return Book" />

@@ -22,7 +22,7 @@
     -fx-background-color: #c5d1d7;
 }
 .table-view .column-header {
-    -fx-background-color: rgba(148, 204, 204, 0.6);
+    -fx-background-color: rgba(0, 169, 169, 0.96);
 }
 .text-field{
     -fx-background-color: rgba(239,201,76,255);
@@ -88,6 +88,9 @@
     -fx-background-radius: 20 20 20 20;
     -fx-text-fill: rgb(255, 255, 255);
     -fx-font-family: Arial;
+}
+#MenuBaradd{
+    -fx-background-color: rgb(241, 193, 79);
 }
 
 

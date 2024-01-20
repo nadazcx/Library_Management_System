@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="700.0" stylesheets="@app/cssfilepath.css" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.EditUserController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" stylesheets="@app/cssfilepath.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.EditUserController">
 
-    <VBox layoutX="24.0" layoutY="174.0" prefHeight="444.0" prefWidth="855.0">
-        <TableView fx:id="usersTableView" prefHeight="427.0" prefWidth="809.0">
+    <VBox layoutX="24.0" layoutY="174.0" prefHeight="492.0" prefWidth="855.0">
+        <TableView fx:id="usersTableView" prefHeight="498.0" prefWidth="867.0">
             <columns>
                 <TableColumn fx:id="cinColumn" prefWidth="104.79998397827148" text="CIN" />
 
@@ -14,7 +15,7 @@
 
                 <TableColumn fx:id="lastNameColumn" prefWidth="161.99996948242188" text="Family Name" />
                 <TableColumn fx:id="birthDateColumn" prefWidth="198.800048828125" text="Birth Date" />
-                <TableColumn fx:id="EmailColumn" prefWidth="157.5999755859375" text="Email" />
+                <TableColumn fx:id="EmailColumn" prefWidth="195.5999755859375" text="Email" />
 
 
 
@@ -35,26 +36,48 @@
 
         </children>
     </Pane>
-    <MenuBar prefHeight="26.0" prefWidth="900.0">
-        <Menu mnemonicParsing="false" text="Manage Books">
-            <items>
-                <MenuItem mnemonicParsing="true" onAction="#redirectToAddBook" text="add book"/>
-                <MenuItem mnemonicParsing="false" onAction="#redirectToEditBook" text="edit book"/>
-            </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Manage Users">
-            <items>
-                <MenuItem mnemonicParsing="true" onAction="#redirectToAddUser" text="add  User"/>
-                <MenuItem mnemonicParsing="false" text="edit User"/>
-            </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Manage Loans">
-            <items>
-                <MenuItem mnemonicParsing="false" onAction="#redirectToNewLoan" text="New Loan"/>
-                <MenuItem mnemonicParsing="false" onAction="#redirectToReturnBook" text="return Book"/>
-            </items>
-        </Menu>
-
+    <MenuBar id="MenuBaradd" prefHeight="38.0" prefWidth="900.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Manage Books">
+                <graphic>
+                    <ImageView fitHeight="183.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../Image/books.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToAddBook" text="Add Book" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToEditBook" text="Edit Book" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Manage Users">
+                <graphic>
+                    <ImageView fitHeight="53.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../Image/boy-book.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToAddUser" text="Add Users" />
+                    <MenuItem mnemonicParsing="false" text="Edit User" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Manage Loans">
+                <graphic>
+                    <ImageView fitHeight="183.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../Image/loan.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToNewLoan" text="New Loan" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToReturnBook" text="return Book" />
+                </items>
+            </Menu>
+        </menus>
     </MenuBar>
 
 </AnchorPane>
