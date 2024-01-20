@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="anchorpaneuser" prefHeight="700" prefWidth="900.0" stylesheets="@app/cssfilepath.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.AddUserController">
+
+    <MenuBar prefHeight="26.0" prefWidth="900.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Manage Books">
+                <items>
+                    <MenuItem mnemonicParsing="true" onAction="#redirectToAddBook" text="add book" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToEditBook" text="edit book" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Manage Users">
+                <items>
+                    <MenuItem mnemonicParsing="true" onAction="#redirectToAddUser" text="add User" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToEditUser" text="edit User" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Manage Loans">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToNewLoan" text="New Loan" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToReturnBook" text="return Book" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+   <HBox layoutX="104.0" layoutY="130.0" prefHeight="463.0" prefWidth="730.0">
+      <children>
+         <HBox  id="add-form-user" prefHeight="528.0" prefWidth="453.0">
+            <children>
+               <VBox prefHeight="409.0" prefWidth="450.0">
+                  <children>
+                     <VBox prefHeight="79.0" prefWidth="334.0">
+                        <children>
+                           <Label alignment="BASELINE_CENTER" prefHeight="93.0" prefWidth="491.0" text="New User" textFill="#535050">
+                              <font>
+                                 <Font name="Arial" size="27.0" />
+                              </font>
+                           </Label>
+                        </children></VBox>
+                     <GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="314.0" prefWidth="470.0">
+                       <columnConstraints>
+                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="64.2" />
+                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="193.0" minWidth="10.0" prefWidth="133.39999999999998" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="83.39999999999998" minWidth="10.0" prefWidth="38.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.60000000000002" minWidth="10.0" prefWidth="147.60000000000002" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="72.99998474121094" minWidth="10.0" prefWidth="55.00001525878906" />
+
+                       </columnConstraints>
+                       <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                       </rowConstraints>
+                        <children>
+                              <Label prefHeight="18.0" prefWidth="150.0" text="Firstname:" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                  <font>
+                                      <Font size="19.0" />
+                                  </font>
+                              </Label>
+                              <TextField fx:id="firstNameTextField" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label prefHeight="18.0" prefWidth="150.0" text="LastName:" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                  <font>
+                                      <Font size="19.0" />
+                                  </font>
+                              </Label>
+                              <TextField fx:id="lastNameTextField" prefWidth="186.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                              <Label prefWidth="150.0" text="CIN:" GridPane.columnIndex="1">
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                              </Label>
+                              <TextField fx:id="cinTextField" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label prefHeight="18.0" prefWidth="150.0" text="Email:" GridPane.columnIndex="3">
+                                  <font>
+                                      <Font size="17.0" />
+                                  </font>
+                              </Label>
+                              <TextField fx:id="emailTextField" prefWidth="186.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Label prefWidth="150.0" text="Birth Date:" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                  <font>
+                                      <Font size="19.0" />
+                                  </font>
+                              </Label>
+                              <DatePicker fx:id="datePicker" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                 <Button contentDisplay="CENTER" onAction="#signIn" prefHeight="40.0" prefWidth="152.0" text="Add User" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                        </children>
+                     </GridPane>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+         <HBox  id="userphoto" prefHeight="463.0" prefWidth="285.0" />
+      </children>
+   </HBox>
+
+</AnchorPane>

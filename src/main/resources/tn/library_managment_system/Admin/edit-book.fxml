@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane  prefHeight="700.0" prefWidth="900.0" stylesheets="@app/cssfilepath.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.EditBookController">
+
+   <VBox layoutX="87.0" layoutY="171.0" prefHeight="444.0" prefWidth="712.0">
+      <TableView id="table-view-edit" fx:id="booksTableView" prefHeight="427.0" prefWidth="797.0">
+         <columns>
+            <TableColumn fx:id="isbnColumn" prefWidth="178.79999160766602" text="ISBN" />
+            <TableColumn fx:id="titleColumn" prefWidth="179.59996032714844" text="Book Title" />
+            <TableColumn fx:id="authorColumn" prefWidth="128.5999755859375" text="Author" />
+            <TableColumn fx:id="typeColumn" prefWidth="159.20001220703125" text="Type" />
+
+
+
+
+         </columns>
+
+      </TableView>
+   </VBox>
+
+    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="102.0" prefHeight="1.0" prefWidth="158.0" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Recherche Avancée " textAlignment="JUSTIFY" />
+
+    <Pane layoutX="127.0" layoutY="128.0" prefHeight="34.0" prefWidth="626.0">
+
+       <children>
+          <TextField fx:id="searchTextField" onKeyReleased="#handleSearch" prefWidth="186.0" promptText="titre" />
+          <TextField fx:id="searchTextISBNField" layoutX="200.0" onKeyReleased="#handleISBN" prefWidth="186.0" promptText="ISBN" />
+          <TextField fx:id="searchTextTypeField" layoutX="408.0" onKeyReleased="#handleType" prefWidth="186.0" promptText="type" />
+
+      </children>
+   </Pane>
+    <MenuBar prefHeight="26.0" prefWidth="900.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Manage Books">
+                <items>
+                    <MenuItem mnemonicParsing="true" onAction="#redirectToAddBook" text="add book" />
+                    <MenuItem mnemonicParsing="false" text="edit book" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Manage Users">
+                <items>
+                    <MenuItem mnemonicParsing="true" onAction="#redirectToAddUser" text="add  User" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToEditUser" text="edit User" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Manage Loans">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToNewLoan" text="New Loan" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToReturnBook" text="return Book" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+
+</AnchorPane>

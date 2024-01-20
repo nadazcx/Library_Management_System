@@ -1,0 +1,94 @@
+
+#bookspic{
+    -fx-background-image: url("../../../../Image/books3.jpg");
+    -fx-background-size: cover; /* Adjust as needed, e.g., contain, stretch */
+    -fx-background-repeat: no-repeat;
+}
+#admin-home-pane {
+    -fx-background-image: url("../../../../Image/0.jpg");
+    -fx-background-size: cover; /* Adjust as needed, e.g., contain, stretch */
+    -fx-background-repeat: no-repeat;
+}
+#pane-home  {
+    -fx-background-color: #eeebdf;
+}
+
+
+#id1{
+-fx-background-color: rgba(206, 194, 194, 0.86);
+
+}
+.table-view {
+    -fx-background-color: #c5d1d7;
+}
+.table-view .column-header {
+    -fx-background-color: rgba(148, 204, 204, 0.6);
+}
+.text-field{
+    -fx-background-color: rgba(239,201,76,255);
+    -fx-text-fill: rgba(65, 63, 63, 0.96);
+}
+.table-column .label {
+    -fx-text-fill: #ffffff;
+}
+#bookform{
+    -fx-background-color: rgb(246, 246, 246);
+    -fx-background-radius: 0 20 20 0;
+}
+
+
+#fxaddbokk{
+    -fx-background-color: rgba(131, 234, 241, 0.38);
+
+
+}
+#userphoto{ -fx-background-image: url("../../../../Image/person.jpg");
+    -fx-background-size: cover; /* Adjust as needed, e.g., contain, stretch */
+    -fx-background-repeat: no-repeat;
+
+
+}
+#add-form-user{
+    -fx-background-radius: 20 0 0 20;
+    -fx-background-color: rgb(243, 243, 243);
+
+
+}
+#anchorpaneuser{
+    -fx-background-color: rgba(131, 234, 241, 0.53);
+}
+#anchor-pane-loan{
+    -fx-background-color: rgba(131, 234, 241, 0.44);
+
+
+}
+#loanPhoto{
+    -fx-background-image: url("../../../../Image/returnImage-removebg-preview.png");
+    -fx-background-size: cover; /* Adjust as needed, e.g., contain, stretch */
+    -fx-background-repeat: no-repeat;
+}
+#add-form-loan{
+
+    -fx-background-radius: 20 20 20 20;
+    -fx-background-color: rgb(243, 243,243 );
+}
+
+#return-book-loan{
+    -fx-background-radius: 20 20 20 20;
+    -fx-background-color: rgb(243, 243,243 );
+}
+#loanreturn{
+    -fx-background-image: url("../../../../Image/6875822.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+
+}
+.button{
+    -fx-background-color: rgb(155, 148, 146);
+    -fx-background-radius: 20 20 20 20;
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-font-family: Arial;
+}
+
+
+

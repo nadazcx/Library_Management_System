@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="fxaddbokk" prefHeight="700" prefWidth="900.0" stylesheets="@app/cssfilepath.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.AddBookController">
+
+    <MenuBar prefHeight="26.0" prefWidth="900.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Manage Books">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Add Book" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToEditBook" text="Edit Book" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Manage Users">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#redirecToAddUser" text="Add Users" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToEditUser" text="Edit User" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Manage Loans">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToNewLoan" text="New Loan" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToReturnBook" text="return Book" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+   <HBox id="add-book-hbox" layoutX="69.0" layoutY="108.0" prefHeight="488.0" prefWidth="762.0">
+      <children>
+         <HBox id="bookspic" fx:id="bookspic" prefHeight="519.0" prefWidth="216.0" />
+         <HBox id="bookform" prefHeight="476.0" prefWidth="550.0">
+            <children>
+               <VBox prefHeight="431.0" prefWidth="550.0">
+                  <children>
+                     <HBox prefHeight="37.0" prefWidth="550.0">
+                        <children>
+                           <Label alignment="BOTTOM_CENTER" prefHeight="38.0" prefWidth="547.0" text="New Book" textAlignment="CENTER" textFill="#4e4c4c">
+                              <font>
+                                 <Font name="Arial" size="24.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <GridPane prefHeight="354.0" prefWidth="539.0">
+                         <columnConstraints>
+                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.8" minWidth="10.0" prefWidth="65.19999618530274" />
+                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.6" minWidth="10.0" prefWidth="188.6" />
+                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="154.0" minWidth="10.0" prefWidth="54.79999999999998" />
+                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="161.39999999999998" prefWidth="190.2" />
+                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="53.599999999999966" />
+
+                         </columnConstraints>
+
+                         <rowConstraints>
+                             <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                             <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                             <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                             <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                             <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                             <RowConstraints maxHeight="35.0" minHeight="0.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                             <RowConstraints maxHeight="84.6" minHeight="10.0" prefHeight="26.599999999999994" vgrow="SOMETIMES" />
+                             <RowConstraints maxHeight="119.80000000000001" minHeight="0.39999999999997726" prefHeight="119.80000000000001" vgrow="SOMETIMES" />
+
+
+                         </rowConstraints>
+
+                         <children>
+                               <Label text="ISBN" GridPane.columnIndex="1" />
+                               <TextField fx:id="ISBNTextField" prefHeight="26.0" prefWidth="144.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                               <Label prefHeight="18.0" prefWidth="44.0" text="Title" GridPane.columnIndex="3" />
+                               <TextField fx:id="titleTextField" prefHeight="26.0" prefWidth="179.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                               <Label text="Type" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                               <TextField fx:id="typeTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                               <Label text="Author First Name" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                               <TextField fx:id="authorFirstNameTextField" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                               <Label text="Author Last Name" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                               <TextField fx:id="authorLastNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                               <Label text="Number Of Copies" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                               <Spinner fx:id="copiesSpinner" max="100" min="1" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                               <Label text="Description" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                               <TextField fx:id="DescriptionTextField" prefHeight="99.0" prefWidth="188.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                 <Button alignment="CENTER" contentDisplay="CENTER" onAction="#addBook" prefHeight="26.0" prefWidth="101.0" text="Add Book" textAlignment="RIGHT" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+                        </children>
+                     </GridPane>
+                     <GridPane>
+                       <columnConstraints>
+                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                       </columnConstraints>
+                       <rowConstraints>
+                         <RowConstraints maxHeight="30.4" minHeight="10.0" prefHeight="30.4" vgrow="SOMETIMES" />
+                           <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                       </rowConstraints>
+                        <children>
+                              <ImageView fx:id="bookImageView" fitHeight="107.0" fitWidth="228.0" preserveRatio="true" GridPane.columnIndex="1" />
+                                 <Button onAction="#uploadPicture" text="Upload Cover" GridPane.halignment="CENTER" />
+                        </children>
+                     </GridPane>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+      </children>
+   </HBox>
+</AnchorPane>

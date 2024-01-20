@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="admin-home-pane" prefHeight="700.0" prefWidth="900.0" stylesheets="@app/cssfilepath.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.AdminHomeController">
+   <children>
+      <Pane id="pane-home" layoutX="-16.0" layoutY="-10.0" opacity="0.84" prefHeight="710.0" prefWidth="229.0">
+         <children>
+            <Pane id="pane-home-1" layoutX="14.0" layoutY="9.0" prefHeight="230.0" prefWidth="216.0" />
+            <Pane id="pane-home-2" layoutX="14.0" layoutY="240.0" prefHeight="230.0" prefWidth="216.0">
+               <children>
+                  <Button id="button-home" layoutX="33.0" layoutY="41.0" mnemonicParsing="false" onAction="#redirectToEditBook" opacity="1" prefHeight="118.0" prefWidth="150.0" text="Access" textFill="#39daef">
+                     <font>
+                        <Font name="Arial" size="31.0" />
+                     </font>
+                  </Button>
+               </children></Pane>
+            <Pane id="pane-home-3" layoutX="14.0" layoutY="470.0" prefHeight="240.0" prefWidth="216.0" />
+         </children></Pane>
+   </children>
+</AnchorPane>

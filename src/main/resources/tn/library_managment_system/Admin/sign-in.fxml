@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700" stylesheets="@app/cssfilepath.css" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.SigninController">
+
+
+    <VBox id="signin-form" alignment="CENTER" layoutX="243.0" layoutY="76.0" prefHeight="496.0" prefWidth="414.0" spacing="10" AnchorPane.leftAnchor="243.0">
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="127.0" prefWidth="158.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Inscription" textAlignment="JUSTIFY">
+         <font>
+            <Font size="31.0" />
+         </font></Label>
+
+        <HBox spacing="5">
+            <Label prefHeight="18.0" prefWidth="150.0" text="Firstname:">
+            <font>
+               <Font size="19.0" />
+            </font></Label>
+            <TextField fx:id="firstNameTextField" prefWidth="186.0" />
+            <Text fx:id="firstNameErrorText" />
+
+        </HBox>
+        <HBox spacing="5">
+            <Label prefHeight="18.0" prefWidth="150.0" text="LastName:">
+            <font>
+               <Font size="19.0" />
+            </font></Label>
+            <TextField fx:id="lastNameTextField" prefWidth="186.0" />
+            <Text fx:id="lastNameErrorText" />
+        </HBox>
+
+        <HBox spacing="5">
+            <Label prefHeight="18.0" prefWidth="150.0" text="Email:">
+            <font>
+               <Font size="19.0" />
+            </font></Label>
+            <TextField fx:id="emailTextField" prefWidth="186.0" />
+            <Text fx:id="emailErrorText" />
+
+        </HBox>
+
+        <HBox prefHeight="26.0" prefWidth="416.0" spacing="5">
+            <Label prefHeight="18.0" prefWidth="150.0" text="Password:">
+            <font>
+               <Font size="19.0" />
+            </font></Label>
+            <PasswordField fx:id="passwordField" prefWidth="186.0" />
+            <Text fx:id="passwordErrorText" />
+        </HBox>
+
+        <HBox spacing="5">
+            <Label prefWidth="150.0" text="CIN:">
+            <font>
+               <Font size="19.0" />
+            </font></Label>
+            <TextField fx:id="cinTextField" prefWidth="186.0" />
+            <Text fx:id="cinErrorText" />
+        </HBox>
+
+        <HBox spacing="5">
+            <Label prefWidth="150.0" text="Birth Date:">
+            <font>
+               <Font size="19.0" />
+            </font></Label>
+            <DatePicker fx:id="datePicker" prefWidth="186.0" />
+        </HBox>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <center>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <buttons>
+            
+                    <Button onAction="#signIn" prefHeight="40.0" prefWidth="80.0" text="Sign In" />
+                    <Button onAction="#redirectToLogInScreen" prefHeight="40.0" prefWidth="80.0" text="Login In" />
+              </buttons>
+            </ButtonBar>
+         </center></BorderPane>
+
+    </VBox>
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+</AnchorPane>
