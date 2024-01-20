@@ -1,6 +1,11 @@
 package tn.library_managment_system.Model;
 
 
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -11,7 +16,8 @@ public class User {
     private String name, lastName;
     private String email;
     private String password;
-    private final LocalDate birthDate;
+    private LocalDate birthDate;
+    private int user_Id;
 
     public User(long CIN, String name, String lastName, String email, String password, String birthDate){
         this.CIN = CIN;
@@ -28,14 +34,19 @@ public class User {
         }
     }
 
-    public User(long id, String name, String lastName, String email, String password, LocalDate BirthDate) {
-        this.CIN = id;
+    public User(long cin, String name, String lastName, String email, String password, LocalDate BirthDate) {
+
+        this.CIN = cin;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.birthDate = BirthDate;
     }
+    public  User (long cin){
+        this.CIN=cin;
+    }
+
 
     public int getAge() {
         LocalDate currentDate = LocalDate.now();
@@ -85,5 +96,20 @@ public class User {
 
     public LocalDate getBirthDate() {
         return birthDate;
+    }
+    public LongProperty cinProperty() {
+        return new SimpleLongProperty(CIN);
+    }
+
+    public StringProperty nameProperty() {
+        return new SimpleStringProperty(name);
+    }
+
+    public StringProperty lastNameProperty() {
+        return new SimpleStringProperty(lastName);
+    }
+
+    public StringProperty emailProperty() {
+        return new SimpleStringProperty(email);
     }
 }

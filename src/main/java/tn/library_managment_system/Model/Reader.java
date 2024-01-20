@@ -15,6 +15,12 @@ public class Reader extends User {
         this.credit = 0;
     }
 
+    public Reader(long CIN, String nom, String prenom, String dateOfBirth, Subscription subscription, int subscriptionFee) {
+        super(CIN, nom, prenom, "-1", "-1", dateOfBirth);
+        this.subscription = subscription;
+        subscription.setSubscriptionFee(subscriptionFee);
+        this.credit = 0;
+    }
     public Reader(long CIN, String nom, String prenom, String email, String password, LocalDate dateOfBirth, Subscription subscription, int subscriptionFee) {
         super(CIN, nom, prenom, email, password, dateOfBirth);
         this.subscription = subscription;

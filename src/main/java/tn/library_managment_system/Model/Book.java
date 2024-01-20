@@ -1,17 +1,19 @@
 package tn.library_managment_system.Model;
 
-import java.util.List;
+import javafx.beans.value.ObservableValue;
 
 public class Book {
 
-    private long ISBN;
+    private String ISBN;
 
     private String title;
-    private final Author author;
+    private  Author author;
     private long code;
-    private final int numberOfCopies;
-    private final List<String> types;
+    private  int numberOfCopies;
+    private String types;
     private String description;
+    public String imageURL;
+
 
     public Author getAuthor() {
         return author;
@@ -21,7 +23,7 @@ public class Book {
         return numberOfCopies;
     }
 
-    public List<String> getTypes() {
+    public String getTypes() {
         return types;
     }
 
@@ -29,7 +31,7 @@ public class Book {
         return description;
     }
 
-    public Book(long ISBN, String title, Author author, long code, int numberOfCopies, List<String> types, String description) {
+    public Book(String ISBN, String title, Author author, long code, int numberOfCopies, String types, String description) {
         this.ISBN = ISBN;
         this.title = title;
         this.author = author;
@@ -37,9 +39,34 @@ public class Book {
         this.numberOfCopies = numberOfCopies;
         this.types = types;
         this.description = description;
+
+
     }
 
-    public long getISBN() {
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public Book(String ISBN, String title, Author author, long code, int numberOfCopies, String types, String description, String imageURL) {
+        this.ISBN = ISBN;
+        this.title = title;
+        this.author = author;
+        this.code = code;
+        this.numberOfCopies = numberOfCopies;
+        this.types = types;
+        this.description = description;
+        this.imageURL=imageURL;
+
+    }
+    public Book(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getISBN() {
         return ISBN;
     }
 
@@ -59,7 +86,7 @@ public class Book {
         this.title = title;
     }
 
-    public void setISBN(long ISBN) {
+    public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
 
@@ -67,7 +94,7 @@ public class Book {
     public String toString() {
         return "model.Book{" +
                 "title='" + title + '\'' +
-                ", author='" + author + '\'' +
+                ", author='" + author + '\'' + ",type= " + types +
                 '}';
     }
 
@@ -78,4 +105,10 @@ public class Book {
     static int compare(Book b1, Book b2) {
         return b1.title.compareToIgnoreCase(b2.title);
     }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+
 }

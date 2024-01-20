@@ -27,7 +27,7 @@ import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 
 
-public class SigninController {
+public class AddUserController{
     @FXML
 
     public Text emailErrorText;
@@ -64,30 +64,25 @@ public class SigninController {
     private BooleanProperty isValidCIN = new SimpleBooleanProperty(true);
     private BooleanProperty isValidFirstName=new SimpleBooleanProperty(true);
     private BooleanProperty isValidLastName=new SimpleBooleanProperty(true);
-    private BooleanProperty isValidPassword=new SimpleBooleanProperty(true);
 
 
 
-    public SigninController() {
-    }
 
     @FXML
     protected void initialize() {
-        addEmailValidationListener();
         addCINValidationListener();
         addLastNameValidationListener();
         addLastNameValidationListener();
         addFirstNameValidationListener();
-        addPasswordValidationListener();
+
     }
 
     @FXML
-    protected void signIn(ActionEvent event) throws NoSuchAlgorithmException {
+    protected void signIn(ActionEvent event)  {
         String nom = firstNameTextField.getText();
         String prenom = lastNameTextField.getText();
         long cin = Long.parseLong(cinTextField.getText());
         String email = emailTextField.getText();
-        String password = PasswordHashing.hashPasswordSha256(passwordField.getText());
         LocalDate dateNaissance = datePicker.getValue();
         if(!isValidFirstName.getValue()){
             firstNameTextField.setText("Invalid name format. Please enter a valid name.");
@@ -98,24 +93,17 @@ public class SigninController {
             return;
         }
 
-        if (!isValidEmail(email)) {
-            emailErrorText.setText("Invalid email format. Please enter a valid email.");
-            cinErrorText.setText("");
-            return;
-        }
+
         if (!isValidCIN.getValue()) {
             cinErrorText.setText("Invalid CIN format. Please enter a valid number.");
             emailErrorText.setText("");
             return;
         }
-        if(!isValidPassword.getValue()){
-            passwordErrorText.setText("Invalid password format. Please enter a valid password.");
-            return;
-        }
+
 
 
         Subscription a1 = new Subscription();
-        Reader lecteur = new Reader(cin, nom, prenom, email, password, dateNaissance, a1, 0);
+        Reader lecteur = new Reader(cin, nom, prenom, email, null, dateNaissance, a1, 0);
         DatabaseConnection conn = new DatabaseConnection();
 
 
@@ -131,7 +119,7 @@ public class SigninController {
                 emailErrorText.setText("A user already exists with this email.");
                 cinErrorText.setText("");
             } else {
-               e.printStackTrace();
+                e.printStackTrace();
             }
         }
     }
@@ -150,14 +138,11 @@ public class SigninController {
         firstNameTextField.clear();
         lastNameTextField.clear();
         cinTextField.clear();
-        emailTextField.clear();
-        passwordField.clear();
         datePicker.setValue(null);
         cinErrorText.setText("");
-        emailErrorText.setText("");
+        emailTextField.clear();
     }
     private void addCINValidationListener() {
-        // Add listener to cinTextField for real-time validation
         cinTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             isValidCIN.set(isValidCIN(newValue));
             if (!isValidCIN.getValue()) {
@@ -167,16 +152,7 @@ public class SigninController {
             }
         });
     }
-    private void addEmailValidationListener() {
-        emailTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            isValidEmail.set(isValidEmail(newValue));
-            if (!isValidEmail.getValue()) {
-                emailErrorText.setText("Email doesn't match the format");
-            } else {
-                emailErrorText.setText("");
-            }
-        });
-    }
+
     private  void addFirstNameValidationListener(){
         firstNameTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             isValidFirstName.set(isValidName(newValue));
@@ -188,22 +164,12 @@ public class SigninController {
             }
         });
     }
-    private void addPasswordValidationListener(){
-        passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
-            isValidPassword.set(isValidPassword(newValue));
-            if(!isValidPassword.getValue()){
-                passwordErrorText.setText("Password should have a minimu of 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character");
-            }
-            else{
-                passwordErrorText.setText("");
-            }
-        });
-    }
+
     private void   addLastNameValidationListener(){
         lastNameTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             isValidLastName.set(isValidName(newValue));
             if(!isValidLastName.getValue()){
-               lastNameErrorText.setText("Invalid last name format. Please enter a valid last name.");
+                lastNameErrorText.setText("Invalid last name format. Please enter a valid last name.");
             }
             else{
                 lastNameErrorText.setText("");
@@ -212,10 +178,7 @@ public class SigninController {
     }
 
 
-    private boolean isValidEmail(String email) {
-        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        return email.matches(emailRegex);
-    }
+
 
     private boolean isValidCIN(String cin) {
         String cinRegex = "^[0-9]{8}$";
@@ -232,32 +195,86 @@ public class SigninController {
         String nameRegex="^[a-zA-Z\\s]*$";
         return name.matches(nameRegex);
     }
-    private  boolean isValidPassword(String password){
-        String passwordRegex="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
-        return password.matches(passwordRegex);
 
-    }
-    @FXML
-    private void redirectToLogInScreen(ActionEvent event) {
-      LoginController LC=new LoginController();
-      LC.redirectToLogInScreen(event);
-    }
-    protected void redirectToSignInScreen( ActionEvent event) {
+
+    public void redirectToAddBook(ActionEvent event) {
         try {
-            URL fxmlLocation = getClass().getResource("/tn/library_managment_system/sign-in.fxml");
-            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            MenuItem menuItem = (MenuItem) event.getSource();
+            Scene scene = menuItem.getParentPopup().getOwnerWindow().getScene();
 
-            Parent root = loader.load();
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-
+            URL fxmlLocation = getClass().getResource("/tn/library_managment_system/admin/add-book.fxml");
+            scene.setRoot(FXMLLoader.load(fxmlLocation));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void redirectToEditBook(ActionEvent event) {
+try {
+            MenuItem menuItem = (MenuItem) event.getSource();
+            Scene scene = menuItem.getParentPopup().getOwnerWindow().getScene();
+
+            URL fxmlLocation = getClass().getResource("/tn/library_managment_system/admin/edit-book.fxml");
+            scene.setRoot(FXMLLoader.load(fxmlLocation));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void redirectToAddUser(ActionEvent event) {
+            try {
+                MenuItem menuItem = (MenuItem) event.getSource();
+                Scene scene = menuItem.getParentPopup().getOwnerWindow().getScene();
+
+                URL fxmlLocation = getClass().getResource("/tn/library_managment_system/admin/add-user.fxml");
+                scene.setRoot(FXMLLoader.load(fxmlLocation));
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    public void redirectToEditUser(ActionEvent event) {
+            try {
+                MenuItem menuItem = (MenuItem) event.getSource();
+                Scene scene = menuItem.getParentPopup().getOwnerWindow().getScene();
+
+                URL fxmlLocation = getClass().getResource("/tn/library_managment_system/admin/edit-user.fxml");
+                scene.setRoot(FXMLLoader.load(fxmlLocation));
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    public void redirectToNewLoan(ActionEvent event) {
+        try {
+            MenuItem menuItem = (MenuItem) event.getSource();
+            Scene scene = menuItem.getParentPopup().getOwnerWindow().getScene();
+
+            URL fxmlLocation = getClass().getResource("/tn/library_managment_system/admin/new-loan.fxml");
+            scene.setRoot(FXMLLoader.load(fxmlLocation));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void redirectToReturnBook(ActionEvent event) {
+        try {
+            MenuItem menuItem = (MenuItem) event.getSource();
+            Scene scene = menuItem.getParentPopup().getOwnerWindow().getScene();
+
+            URL fxmlLocation = getClass().getResource("/tn/library_managment_system/admin/return-book.fxml");
+            scene.setRoot(FXMLLoader.load(fxmlLocation));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

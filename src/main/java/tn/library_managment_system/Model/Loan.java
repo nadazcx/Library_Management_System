@@ -5,14 +5,18 @@ import java.time.LocalDate;
 
 public class Loan {
     private final Book book;
+    private User user;
     private final LocalDate loanDate;
     private LocalDate returnDate;
+    private boolean returned;
 
-    public Loan(Book book, LocalDate loanDate) {
+    public Loan(Book book, User user, LocalDate loanDate) {
         this.book = book;
+        this.user=user;
         this.loanDate = loanDate;
-        returnDate = loanDate.plusDays(7);
+        returnDate = loanDate.plusDays(15);
     }
+
 
     public Book getBook() {
         return book;
@@ -28,5 +32,13 @@ public class Loan {
 
     public LocalDate getLoanDate() {
         return loanDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public boolean isReturned() {
+        return returned;
     }
 }

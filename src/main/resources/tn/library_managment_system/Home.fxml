@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.HomeController">
+   <AnchorPane layoutX="18.0" layoutY="19.0" minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="831.0">
+      <children>
+       <Button layoutX="622.0" layoutY="7.0" mnemonicParsing="false" onAction="#redirectToLogInScreen" prefHeight="40.0" prefWidth="82.0" text="Login" />
+         <Button layoutX="722.0" layoutY="7.0" mnemonicParsing="false" onAction="#redirectToSignInScreen" prefHeight="40.0" prefWidth="73.0" text="Sign In" />
+      </children>
+   </AnchorPane>
+    <VBox layoutX="14.0" layoutY="139.0">
+        <Label text="Book Types" />
+        <ListView fx:id="bookTypesListView" prefHeight="70.0" prefWidth="451.0" />
+        <Label text="Books" />
+        <ListView fx:id="booksListView" prefHeight="200.0" prefWidth="200.0" />
+
+    </VBox>
+    <VBox layoutX="500.0" layoutY="130.0" prefHeight="600.0" prefWidth="380.0">
+        <Label text="Book Details" />
+        <ImageView fx:id="bookImageView" fitHeight="200.0" fitWidth="300.0" preserveRatio="true" />
+
+        <Label fx:id="descriptionLabel" textAlignment="JUSTIFY" wrapText="true" />
+    </VBox>
+
+    <ButtonBar layoutX="690.0" layoutY="14.0" prefHeight="40.0" prefWidth="200.0" />
+
+</AnchorPane>

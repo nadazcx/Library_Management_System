@@ -2,14 +2,61 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Text?>
-<VBox alignment="CENTER" spacing="10" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.library_managment_system.Controller.LoginController">
-        <TextField fx:id="emailTextField" prefHeight="26.0" prefWidth="200.0" text="email" />
-        <Separator prefWidth="200.0" />
-        <PasswordField fx:id="passwordTextField" prefHeight="26.0" prefWidth="200.0" text="password" />
-        <Text fx:id="cinErrorText" />
-        <Separator prefWidth="200.0" />
-        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Login" onAction="#handleLogin" />
-        <Button fx:id="signInButton" text="Sign In" onAction="#redirectToSignInScreen"/>
-    </VBox>
+<AnchorPane prefHeight="700" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.LoginController">
+        <VBox alignment="CENTER" layoutX="243.0" layoutY="76.0" prefHeight="496.0" prefWidth="414.0" spacing="10" AnchorPane.leftAnchor="243.0">
+      <BorderPane prefHeight="92.0" prefWidth="414.0">
+
+         <left>
+                           <Label prefHeight="18.0" prefWidth="150.0" text="Title" BorderPane.alignment="CENTER">
+                                   <font>
+                                           <Font size="19.0" />
+                                   </font>
+            </Label>
+         </left>
+         <center>
+                           <TextField fx:id="extField" prefWidth="186.0" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <BorderPane prefHeight="117.0" prefWidth="414.0" BorderPane.alignment="CENTER">
+               <center>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Log In" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Text>
+               </center></BorderPane>
+         </top></BorderPane>
+      <BorderPane prefHeight="110.0" prefWidth="414.0">
+         <left>
+                           <Label prefHeight="18.0" prefWidth="150.0" text="Password:" BorderPane.alignment="CENTER">
+                                   <font>
+                                           <Font size="19.0" />
+                                   </font>
+            </Label>
+         </left>
+         <center>
+                           <PasswordField fx:id="passwordTextField" prefWidth="186.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+                <HBox spacing="5" />
+                <HBox prefHeight="26.0" prefWidth="416.0" spacing="5" />
+<!--                <TextField fx:id="cinErrorText" prefWidth="186.0" />-->
+                <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <bottom>
+                                <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                        <buttons>
+                                                <Button mnemonicParsing="false" onAction="#handleLogin" prefHeight="40.0" prefWidth="80.0" text="LogIn" />
+
+                                                <Button fx:id="signInButton" mnemonicParsing="false" onAction="#redirectToSignInScreen" prefHeight="40.0" prefWidth="80.0" text="Sign In" />
+                                        </buttons>
+                                </ButtonBar>
+         </bottom></BorderPane>
+
+
+
+
+
+        </VBox>
+    </AnchorPane>

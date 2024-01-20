@@ -11,12 +11,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import tn.library_managment_system.Service.UserService;
 import tn.library_managment_system.util.DatabaseConnection;
 
 import java.io.IOException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import static tn.library_managment_system.Service.UserService.*;
@@ -44,7 +44,7 @@ public class LoginController{
     protected void handleLogin(ActionEvent event) throws SQLException, NoSuchAlgorithmException {
         String email = emailTextField.getText();
         String password = passwordTextField.getText();
-        String userRole = UserService.sValidLogin(email, password, DatabaseConnection.getConnection());
+        String userRole = sValidLogin(email, password, DatabaseConnection.getConnection());
         String fxmlLocation;
         System.out.println(userRole);
 
@@ -79,14 +79,14 @@ public class LoginController{
         }
     }
 
+    private String sValidLogin(String email, String password, Connection connection) {
+        return null;
+    }
 
-
-
-    @FXML
-    private void redirectToSignInScreen(ActionEvent event) {
+    protected void redirectToLogInScreen(ActionEvent event) {
         try {
-            URL fxmlLocation = getClass().getResource("/tn/library_managment_system/sign-in.fxml");
-            //System.out.println(fxmlLocation);
+            URL fxmlLocation = getClass().getResource("/tn/library_managment_system/login.fxml");
+            // System.out.println(fxmlLocation);
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
 
             Parent root = loader.load();
@@ -95,10 +95,20 @@ public class LoginController{
             stage.setScene(new Scene(root));
             stage.show();
 
-
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+
+
+    @FXML
+    private void redirectToSignInScreen(ActionEvent event) {
+        SigninController Sn = new SigninController();
+        Sn.redirectToSignInScreen(event);
+
+
     }
 
 }

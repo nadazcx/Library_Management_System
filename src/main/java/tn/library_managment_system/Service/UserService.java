@@ -7,9 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import tn.library_managment_system.Model.User;
+import tn.library_managment_system.util.DatabaseConnection;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static tn.library_managment_system.util.PasswordHashing.hashPasswordSha256;
 
@@ -23,9 +26,37 @@ public class UserService {
                 if (resultSet.next()) {
                     return resultSet.getLong("User_ID");
                 } else {
-                    return -1;
+                    throw new SQLException("No user found with the specified CIN.");
                 }
             }
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static List<User> getAllUsers(Connection conn) {
+        String queryGetAllUsers = "SELECT * FROM user";
+        try {
+            PreparedStatement statementGetAllUsers = conn.prepareStatement(queryGetAllUsers);
+            try (ResultSet resultSet = statementGetAllUsers.executeQuery()) {
+                List<User> listOfUsers = new ArrayList<>();
+                while (resultSet.next()) {
+                    int userId = resultSet.getInt("user_ID");
+                    long cin = resultSet.getLong("CIN");
+                    String firstName = resultSet.getString("firstName");
+                    String lastName = resultSet.getString("lastName");
+                    String email = resultSet.getString("Email");
+                    String password = resultSet.getString("Password");
+                    Date birthdate = resultSet.getDate("birthdate");
+
+                    User user = new User(cin, firstName, lastName, email, password, birthdate.toLocalDate());
+                    listOfUsers.add(user);
+                }
+
+                return listOfUsers;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -113,6 +144,11 @@ public class UserService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static void main(String[] args) throws SQLException {
+        List<User> users = getAllUsers(DatabaseConnection.getConnection());
+        System.out.println(users);
     }
 
 
