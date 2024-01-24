@@ -100,31 +100,42 @@ public class ReturnBookController {
     }
 
     public void returnBook(ActionEvent event) {
-        try{
-            String isbn= isbnTextField.getText();
-            Long cin= Long.parseLong(cinTextField.getText());
+        try {
+            String isbn = isbnTextField.getText().trim();
+            String cinText = cinTextField.getText().trim();
+
+            if (isbn.isEmpty() || cinText.isEmpty()) {
+                showValidationError("Please fill in all the fields");
+                return;
+            }
+
+            Long cin = Long.parseLong(cinText);
             Book book = new Book(isbn);
             User user = new User(cin);
-            LocalDate Date = LocalDate.now();
-            Loan loan = new Loan(book,user,Date);
+            LocalDate currentDate = LocalDate.now();
+            Loan loan = new Loan(book, user, currentDate);
             LoanService.returnBook(loan, DatabaseConnection.getConnection());
             alert("Book returned successfully");
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
-    }  catch (Exception e) {
-
-        if ("For input string: \"\"".equals(e.getMessage())) {
-            emptyError.setText("Please fill all the fields");
-        }
-        if (e.getMessage().equals("java.sql.SQLException: Book not found")) {
-            isbnError.setText("Book not found");
-        } else if (e.getMessage().equals("java.sql.SQLException: No user found with the specified CIN.")) {
-            cinError.setText("User not found");
-        } else {
-            e.printStackTrace();
+        } catch (Exception e) {
+            if (e.getMessage().equals("java.sql.SQLException: Book not found")) {
+                isbnError.setText("Book not found");
+            } else if (e.getMessage().equals("java.sql.SQLException: No user found with the specified CIN.")) {
+                cinError.setText("User not found");
+            } else {
+                e.printStackTrace();
+            }
         }
     }
+
+    private void showValidationError(String message) {
+        // You can customize this method to display an alert for validation errors
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     private void alert(String bookReturnedSuccessfully) {

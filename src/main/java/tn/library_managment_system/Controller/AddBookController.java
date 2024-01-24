@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
@@ -22,6 +23,7 @@ import javafx.scene.image.Image;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 public class AddBookController {
@@ -37,33 +39,60 @@ public class AddBookController {
     public ImageView bookImageView;
     private File selectedFile;
 
+
     @FXML
     public void addBook(ActionEvent actionEvent) throws SQLException {
-        String ISBN = ISBNTextField.getText();
-        String title = titleTextField.getText();
-        String authorFirstName = authorFirstNameTextField.getText();
-        String authorLastName = authorLastNameTextField.getText();
-        String type = typeTextField.getText();
-        String description = DescriptionTextField.getText();
-        int copiesNumber = copiesSpinner.getValue();
+        try {
+            String ISBN = ISBNTextField.getText().trim();
+            String title = titleTextField.getText().trim();
+            String authorFirstName = authorFirstNameTextField.getText().trim();
+            String authorLastName = authorLastNameTextField.getText().trim();
+            String type = typeTextField.getText().trim();
+            String description = DescriptionTextField.getText().trim();
+            int copiesNumber = copiesSpinner.getValue();
 
-        if (ISBNTextField != null && titleTextField != null && typeTextField != null
-                && authorFirstNameTextField != null && authorLastNameTextField != null
-                && copiesSpinner != null) {
-            Author author = new Author(-1, authorLastName, authorFirstName);
-            Book book = new Book(ISBN, title, author, -1, copiesNumber, type, description);
-            BookService.ajouterLivreDansBaseDeDonnees(book, DatabaseConnection.getConnection());
-            System.out.println(book);
-            if (selectedFile != null) {
-                if (BookService.uploadImage(selectedFile, book, DatabaseConnection.getConnection())) {
-                    bookAdd.setText("Book and Image added successfully");
-                } else {
-                    bookAdd.setText("Book added successfully, but failed to upload the image");
+            if (!ISBN.isEmpty() && !title.isEmpty() && !type.isEmpty()
+                    && !authorFirstName.isEmpty() && !authorLastName.isEmpty()
+                    && copiesNumber > 0) {
+
+                Author author = new Author(-1, authorLastName, authorFirstName);
+                Book book = new Book(ISBN, title, author, -1, copiesNumber, type, description);
+
+                try (Connection connection = DatabaseConnection.getConnection()) {
+                    BookService.ajouterLivreDansBaseDeDonnees(book, connection);
+                    alert("book added successfully");
+                    resetForm();
+
+
                 }
+                catch (SQLException e) {
+                    if (e.getMessage().trim().contains("java.sql.SQLException:Un book avec le même ISBN existe déjà dans la base de données.".trim())) {
+                        bookAddErrorText.setText("A book with this ISBN already exists");
+                    } else {
+                        bookAddErrorText.setText(e.getMessage());
+                    }
+                }
+
+
             } else {
-                bookAdd.setText("Book added successfully");
+                showValidationErrorAlert("Please fill in all the fields.");
             }
+        } catch (Exception e) {
+            if (e.getMessage().trim().contains("Un book avec le même ISBN existe déjà dans la base de données.".trim())) {
+                bookAddErrorText.setText("A book with this ISBN already exists");
+            } else {
+                bookAddErrorText.setText(e.getMessage());
+            }
+
         }
+    }
+
+    private void alert(String bookReturnedSuccessfully) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Book Added Successfully");
+        alert.setContentText(bookReturnedSuccessfully);
+        alert.showAndWait();
+
     }
 
     private void resetForm() {
@@ -74,7 +103,7 @@ public class AddBookController {
         typeTextField.clear();
         DescriptionTextField.clear();
         copiesSpinner.getValueFactory().setValue(1);
-        bookAdd.setText("");
+
     }
 
     @FXML
@@ -163,6 +192,14 @@ public class AddBookController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void showValidationErrorAlert(String message) {
+        // You can customize this method to display an alert for validation errors
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
 

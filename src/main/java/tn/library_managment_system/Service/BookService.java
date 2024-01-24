@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 public class BookService {
-    static  long getBookIDByISBN(Book book, Connection conn){
+    static long getBookIDByISBN(Book book, Connection conn) {
         String requeteGetBookIDByISBN = "SELECT code FROM book WHERE ISBN = ?";
         try {
             PreparedStatement declarationGetBookIDByISBN = conn.prepareStatement(requeteGetBookIDByISBN);
@@ -26,7 +26,9 @@ public class BookService {
             try (ResultSet resultSet = declarationGetBookIDByISBN.executeQuery()) {
                 if (resultSet.next()) {
                     return resultSet.getLong("code");
-                }else { throw new SQLException("Book not found");}
+                } else {
+                    throw new SQLException("Book not found");
+                }
 
             }
         } catch (SQLException e) {
@@ -45,7 +47,8 @@ public class BookService {
 
                 try (ResultSet resultatVerificationISBN = declarationVerificationISBN.executeQuery()) {
                     if (resultatVerificationISBN.next()) {
-                        throw new SQLException("Un book avec le même ISBN existe déjà dans la base de données.");
+//                        throw new SQLException("Un book avec le même ISBN existe déjà dans la base de données.");
+                        throw new Exception("Un book avec le même ISBN existe déjà dans la base de données.");
                     } else {
                         String requeteInsertionLivre = "INSERT INTO book(ISBN, title, author_id, numberofcopies, description, type) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -74,6 +77,8 @@ public class BookService {
                             }
                         }
                     }
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
                 }
             }
         } catch (SQLException e) {
@@ -82,8 +87,6 @@ public class BookService {
         return -1;
 
     }
-
-
 
 
     public static void modifierLivreDansBaseDeDonnees(Book book, Connection conn) {
@@ -145,10 +148,10 @@ public class BookService {
                     int numberOfCopies = resultSet.getInt("numberOfCopies");
                     String description = resultSet.getString("description");
                     String type = resultSet.getString("type");
-                    String imageURL= resultSet.getString("cover_photo_url");
+                    String imageURL = resultSet.getString("cover_photo_url");
                     Author author = AuthorService.getAuthorByid(resultSet.getLong("author_id"), conn);
 
-                    Book book = new Book(ISBN, title, author, code, numberOfCopies, type, description,imageURL);
+                    Book book = new Book(ISBN, title, author, code, numberOfCopies, type, description, imageURL);
                     listOfBooks.add(book);
                 }
 
@@ -159,22 +162,23 @@ public class BookService {
         }
     }
 
-    public static Map<String,List<Book>> groupBooksByType(Connection conn){
-        List<Book> bookList= getAllBooks(conn);
-        Map<String,List<Book>> map = new HashMap<>();
-        for (Book book : bookList){
-            if (map.containsKey(book.getTypes())){
+    public static Map<String, List<Book>> groupBooksByType(Connection conn) {
+        List<Book> bookList = getAllBooks(conn);
+        Map<String, List<Book>> map = new HashMap<>();
+        for (Book book : bookList) {
+            if (map.containsKey(book.getTypes())) {
                 List<Book> list = map.get(book.getTypes());
                 list.add(book);
-                map.put(book.getTypes(),list);
-            }else {
+                map.put(book.getTypes(), list);
+            } else {
                 List<Book> list = new ArrayList<>();
                 list.add(book);
-                map.put(book.getTypes(),list);
+                map.put(book.getTypes(), list);
             }
         }
         return map;
     }
+
     public static void setURL(Book book, Connection conn) throws SQLException {
         String requeteSetURL = "update book set cover_photo_url= ? where ISBN=?";
         try {
@@ -192,32 +196,31 @@ public class BookService {
             throw new RuntimeException(e);
         }
     }
-        public static boolean uploadImage(File sourceFile, Book book, Connection conn) throws SQLException {
+
+    public static boolean uploadImage(File sourceFile, Book book, Connection conn) throws SQLException {
         try {
             String fileName = sourceFile.getName();
             int dotIndex = fileName.lastIndexOf('.');
             String extension = (dotIndex == -1) ? "" : fileName.substring(dotIndex + 1);
 
-            String destinationDirectory = "D:/1Ginfo/2em/Library_Management_System/Library_Managment_System/src/main/resources/Image/";
-            String destinationPath = destinationDirectory + book.getISBN()+ "." + extension;
+            // Get the application's working directory
+            String workingDirectory = System.getProperty("user.dir");
+
+            String destinationDirectory = "/src/main/resources/Image/";
+
+            // Create the full destination path
+            String destinationPath = workingDirectory + destinationDirectory + book.getISBN() + "." + extension;
             Path destination = Path.of(destinationPath);
             System.out.println(destinationPath);
-            book.setImageURL(book.getISBN()+ "." + extension);
-
-
-
-            // Copy the file to the destination
+            book.setImageURL(book.getISBN() + "." + extension);
+            BookService.setURL(book, conn);
             Files.copy(sourceFile.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
-
-
+            return  true;
 
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-            setURL(book,conn);;
-        return true;}
-
-
+    }
 }
 

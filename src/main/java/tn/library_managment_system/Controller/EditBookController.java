@@ -1,5 +1,6 @@
 package tn.library_managment_system.Controller;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import tn.library_managment_system.Model.Author;
@@ -29,6 +32,7 @@ public class EditBookController {
     public TextField searchTextField;
     public TextField searchTextISBNField;
     public TextField searchTextTypeField;
+    public TableColumn coverColumn;
     @FXML
     private TableView<Book> booksTableView;
 
@@ -39,6 +43,7 @@ public class EditBookController {
     private TableColumn<Book, String> titleColumn;
 
     @FXML
+
     public void initialize() throws SQLException {
         List<Book> listOfBooks = BookService.getAllBooks(DatabaseConnection.getConnection());
 
@@ -76,7 +81,6 @@ public class EditBookController {
 
         booksTableView.getColumns().add(deleteColumn);
     }
-
 
 
 

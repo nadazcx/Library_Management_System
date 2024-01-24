@@ -70,6 +70,7 @@ public class AddUserController{
 
     @FXML
     protected void initialize() {
+        addEmailValidationListener();
         addCINValidationListener();
         addLastNameValidationListener();
         addLastNameValidationListener();
@@ -78,34 +79,34 @@ public class AddUserController{
     }
 
     @FXML
-    protected void signIn(ActionEvent event)  {
+    protected void signIn(ActionEvent event) {
         String nom = firstNameTextField.getText();
         String prenom = lastNameTextField.getText();
-        long cin = Long.parseLong(cinTextField.getText());
+        String cinText = cinTextField.getText();
         String email = emailTextField.getText();
         LocalDate dateNaissance = datePicker.getValue();
-        if(!isValidFirstName.getValue()){
-            firstNameTextField.setText("Invalid name format. Please enter a valid name.");
-            return;
-        }
-        if(!isValidLastName.getValue()){
-            lastNameErrorText.setText("Invalid last name format. Please enter a valid last name.");
+
+        if (nom.isEmpty() || prenom.isEmpty() || cinText.isEmpty() || email.isEmpty() || dateNaissance == null) {
+            // Display an error message or handle empty fields as needed
+            showValidationErrorAlert("Please fill in all the fields.");
             return;
         }
 
-
-        if (!isValidCIN.getValue()) {
+        long cin;
+        try {
+            cin = Long.parseLong(cinText);
+        } catch (NumberFormatException e) {
+            // Handle the case where CIN is not a valid number
             cinErrorText.setText("Invalid CIN format. Please enter a valid number.");
             emailErrorText.setText("");
             return;
         }
 
-
+        // Your existing code for validating names, CIN, and other conditions...
 
         Subscription a1 = new Subscription();
         Reader lecteur = new Reader(cin, nom, prenom, email, null, dateNaissance, a1, 0);
         DatabaseConnection conn = new DatabaseConnection();
-
 
         try {
             ReaderService.addReaderToDatabase(lecteur, DatabaseConnection.getConnection());
@@ -114,7 +115,7 @@ public class AddUserController{
         } catch (Exception e) {
             if (e.getMessage().contains("A user already exists with this CIN")) {
                 cinErrorText.setText("CIN already exists. Please choose a different CIN.");
-                cinErrorText.setText("");
+                emailErrorText.setText("");
             } else if (e.getMessage().contains("A user already exists with this email")) {
                 emailErrorText.setText("A user already exists with this email.");
                 cinErrorText.setText("");
@@ -124,13 +125,22 @@ public class AddUserController{
         }
     }
 
+    private void showValidationErrorAlert(String message) {
+        // You can customize this method to display an alert for validation errors
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 
 
     private void showInfoAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Inscription successful");
         alert.setHeaderText(null);
-        alert.setContentText("You signed up successfully!");
+        alert.setContentText("User Added Successfully");
         alert.showAndWait();
     }
 
@@ -141,6 +151,7 @@ public class AddUserController{
         datePicker.setValue(null);
         cinErrorText.setText("");
         emailTextField.clear();
+        emailErrorText.setText("");
     }
     private void addCINValidationListener() {
         cinTextField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -163,6 +174,20 @@ public class AddUserController{
                 firstNameErrorText.setText("");
             }
         });
+    }
+    private void addEmailValidationListener() {
+        emailTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            isValidEmail.set(isValidEmail(newValue));
+            if (!isValidEmail.getValue()) {
+                emailErrorText.setText("Invalid email format. Please enter a valid email address.");
+            } else {
+                emailErrorText.setText("");
+            }
+        });
+    }
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        return email.matches(emailRegex);
     }
 
     private void   addLastNameValidationListener(){

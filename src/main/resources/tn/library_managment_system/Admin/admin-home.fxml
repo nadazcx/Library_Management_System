@@ -4,20 +4,60 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="admin-home-pane" prefHeight="700.0" prefWidth="900.0" stylesheets="@app/cssfilepath.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.AdminHomeController">
+<AnchorPane id="anchor-pane--home" prefHeight="700.0" prefWidth="900.0" stylesheets="@app/cssfilepath.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.AdminHomeController">
    <children>
-      <Pane id="pane-home" layoutX="-16.0" layoutY="-10.0" opacity="0.84" prefHeight="710.0" prefWidth="229.0">
+      <HBox id="hbox-home" layoutX="101.0" layoutY="57.0" prefHeight="537.0" prefWidth="736.0">
          <children>
-            <Pane id="pane-home-1" layoutX="14.0" layoutY="9.0" prefHeight="230.0" prefWidth="216.0" />
-            <Pane id="pane-home-2" layoutX="14.0" layoutY="240.0" prefHeight="230.0" prefWidth="216.0">
+            <Pane prefHeight="578.0" prefWidth="236.0">
                <children>
-                  <Button id="button-home" layoutX="33.0" layoutY="41.0" mnemonicParsing="false" onAction="#redirectToEditBook" opacity="1" prefHeight="118.0" prefWidth="150.0" text="Access" textFill="#39daef">
-                     <font>
-                        <Font name="Arial" size="31.0" />
-                     </font>
-                  </Button>
+                  <GridPane layoutX="7.0" layoutY="96.0" prefHeight="441.0" prefWidth="301.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="34.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="267.0" minWidth="10.0" prefWidth="267.0" />
+
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <Text fill="#000000ce" layoutX="10.0" layoutY="72.0" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" text="LOREM IPSUM GENERATORLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation" wrappingWidth="241.99999237060547" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <font>
+                           <Font name="Arial" size="11.0" />
+                        </font>
+                     </Text>
+                     <Button id="buttonhome" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#redirectToEditBook" prefHeight="49.0" prefWidth="204.0" text="enter" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <font>
+                           <Font size="20.0" />
+                        </font>
+                     </Button>
+                      <Text fill="#000000ce" text="Library Manager" wrappingWidth="241.99999237060547" GridPane.columnIndex="1">
+                        <font>
+                           <Font name="Arial" size="50.0" />
+                        </font>
+                     </Text>
+
+                  </GridPane>
                </children></Pane>
-            <Pane id="pane-home-3" layoutX="14.0" layoutY="470.0" prefHeight="240.0" prefWidth="216.0" />
-         </children></Pane>
+            <FlowPane prefHeight="583.0" prefWidth="481.0">
+               <children>
+                  <GridPane prefHeight="586.0" prefWidth="512.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="258.0" minWidth="10.0" prefWidth="90.6" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="258.0" minWidth="10.0" prefWidth="90.6" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="477.6000038146973" minWidth="10.0" prefWidth="432.6" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="190.4" minHeight="7.400000000000006" prefHeight="7.400000000000006" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="383.4" minHeight="10.0" prefHeight="383.4" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Pane id="admin-home-pane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+               </children></FlowPane>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

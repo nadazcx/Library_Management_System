@@ -5,8 +5,8 @@
     -fx-background-repeat: no-repeat;
 }
 #admin-home-pane {
-    -fx-background-image: url("../../../../Image/0.jpg");
-    -fx-background-size: cover; /* Adjust as needed, e.g., contain, stretch */
+    -fx-background-image: url("../../../../Image/home.png");
+    -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
 }
 #pane-home  {
@@ -22,10 +22,10 @@
     -fx-background-color: #c5d1d7;
 }
 .table-view .column-header {
-    -fx-background-color: rgba(0, 169, 169, 0.96);
+    -fx-background-color: rgba(9, 45, 224, 0.55);
 }
 .text-field{
-    -fx-background-color: rgba(239,201,76,255);
+    -fx-background-color: #fbdd24;
     -fx-text-fill: rgba(65, 63, 63, 0.96);
 }
 .table-column .label {
@@ -38,7 +38,7 @@
 
 
 #fxaddbokk{
-    -fx-background-color: rgba(131, 234, 241, 0.38);
+    -fx-background-color: rgba(205, 222, 224, 0.38);
 
 
 }
@@ -55,10 +55,12 @@
 
 }
 #anchorpaneuser{
-    -fx-background-color: rgba(131, 234, 241, 0.53);
+    -fx-background-color: rgba(205, 222, 224, 0.38);
+
 }
 #anchor-pane-loan{
-    -fx-background-color: rgba(131, 234, 241, 0.44);
+    -fx-background-color: rgba(205, 222, 224, 0.38);
+
 
 
 }
@@ -90,8 +92,28 @@
     -fx-font-family: Arial;
 }
 #MenuBaradd{
-    -fx-background-color: rgb(241, 193, 79);
+    -fx-background-color: #fbdd24;
 }
 
 
 
+#hbox-home{
+    /*-fx-background-color: rgb(252, 249, 249);*/
+    -fx-background-radius: 20 20 20 20;
+}
+#buttonhome{
+    -fx-background-color: rgba(238,43,112,255);
+    -fx-background-radius: 20 20 20 20;
+    -fx-font-family: Arial;
+    -fx-text-fill: rgba(33, 31, 31, 0.86);
+    -fx-font-size: 20px;
+
+
+
+
+}
+#textfieldedit{
+    -fx-background-color: rgba(251, 221, 36, 0.47);
+
+
+}

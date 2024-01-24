@@ -10,7 +10,9 @@
    <VBox layoutX="22.0" layoutY="183.0" prefHeight="487.0" prefWidth="858.0">
       <TableView id="table-view-edit" fx:id="booksTableView" prefHeight="512.0" prefWidth="858.0">
          <columns>
-            <TableColumn fx:id="isbnColumn" prefWidth="122.20001220703125" text="ISBN" />
+
+
+             <TableColumn fx:id="isbnColumn" prefWidth="122.20001220703125" text="ISBN" />
             <TableColumn fx:id="titleColumn" prefWidth="225.5999755859375" text="Book Title" />
             <TableColumn fx:id="authorColumn" prefWidth="180.0" text="Author" />
             <TableColumn fx:id="typeColumn" prefWidth="270.5999755859375" text="Type" />
@@ -26,9 +28,9 @@
     <Pane layoutX="46.0" layoutY="128.0" prefHeight="42.0" prefWidth="800.0">
 
        <children>
-          <TextField fx:id="searchTextField" onKeyReleased="#handleSearch" prefWidth="186.0" text="titre" />
-          <TextField fx:id="searchTextISBNField" layoutX="200.0" onKeyReleased="#handleISBN" prefWidth="186.0" text="ISBN" />
-          <TextField fx:id="searchTextTypeField" layoutX="408.0" onKeyReleased="#handleType" prefWidth="186.0" text="type" />
+          <TextField  id="textfieldedit" fx:id="searchTextField" onKeyReleased="#handleSearch" prefWidth="186.0" text="titre" />
+          <TextField id="textfieldedit"  fx:id="searchTextISBNField" layoutX="200.0" onKeyReleased="#handleISBN" prefWidth="186.0" text="ISBN" />
+          <TextField  id="textfieldedit" fx:id="searchTextTypeField" layoutX="408.0" onKeyReleased="#handleType" prefWidth="186.0" text="type" />
 
       </children>
    </Pane>

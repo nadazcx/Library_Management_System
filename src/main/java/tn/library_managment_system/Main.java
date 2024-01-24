@@ -16,7 +16,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("admin/add-book.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("admin/admin-home.fxml")));
 
         // Set the background color to blue
 

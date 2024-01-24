@@ -96,9 +96,16 @@ public class NewLoanController {
 
     public void newLoan(ActionEvent event) {
         try {
-            long cin = Long.parseLong(cinTextField.getText());
-            String isbn = isbnTextField.getText();
+            String cinText = cinTextField.getText().trim();
+            String isbn = isbnTextField.getText().trim();
             LocalDate date = datePicker.getValue();
+
+            if (cinText.isEmpty() || isbn.isEmpty() || date == null) {
+                showValidationError("Please fill in all the fields");
+                return;
+            }
+
+            long cin = Long.parseLong(cinText);
             Book book = new Book(isbn);
             User user = new User(cin);
 
@@ -106,11 +113,7 @@ public class NewLoanController {
             LoanService.addNewLoan(loan, DatabaseConnection.getConnection());
             alert("Loan added successfully");
             clear();
-        }  catch (Exception e) {
-
-            if ("For input string: \"\"".equals(e.getMessage())) {
-                   emptyError.setText("Please fill all the fields");
-            }
+        } catch (Exception e) {
             if (e.getMessage().equals("java.sql.SQLException: Book not found")) {
                 isbnError.setText("Book not found");
             } else if (e.getMessage().equals("java.sql.SQLException: No user found with the specified CIN.")) {
@@ -119,6 +122,15 @@ public class NewLoanController {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void showValidationError(String message) {
+        // You can customize this method to display an alert for validation errors
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 

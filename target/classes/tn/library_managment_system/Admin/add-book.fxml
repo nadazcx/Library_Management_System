@@ -78,9 +78,9 @@
 
                          <rowConstraints>
                              <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-                             <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-                             <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-                             <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                             <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="52.2" vgrow="SOMETIMES" />
+                             <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="29.400000000000006" vgrow="SOMETIMES" />
+                             <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="34.2" vgrow="SOMETIMES" />
                              <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                              <RowConstraints maxHeight="35.0" minHeight="0.0" prefHeight="10.0" vgrow="SOMETIMES" />
                              <RowConstraints maxHeight="84.6" minHeight="10.0" prefHeight="26.599999999999994" vgrow="SOMETIMES" />
@@ -120,6 +120,7 @@
                               <ImageView fx:id="bookImageView" fitHeight="107.0" fitWidth="228.0" preserveRatio="true" GridPane.columnIndex="1" />
                                  <Button onAction="#uploadPicture" text="Upload Cover" GridPane.halignment="CENTER" />
                         </children>
+                         <Text fx:id="bookAddErrorText" fill="#b90c2b" wrappingWidth="270.99997568130493" GridPane.columnIndex="1" />
                      </GridPane>
                   </children>
                </VBox>

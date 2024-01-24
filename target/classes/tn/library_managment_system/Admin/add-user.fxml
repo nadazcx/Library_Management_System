@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <AnchorPane id="anchorpaneuser" prefHeight="700" prefWidth="900.0" stylesheets="@app/cssfilepath.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.library_managment_system.Controller.AddUserController">
 
-    <MenuBar id="MenuBaradd"  prefHeight="38.0" prefWidth="900.0">
+    <MenuBar id="MenuBaradd" prefHeight="38.0" prefWidth="900.0">
         <menus>
             <Menu mnemonicParsing="false" text="Manage Books">
                 <graphic>
@@ -19,7 +18,7 @@
                     </ImageView>
                 </graphic>
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Add Book" onAction="#redirectToAddBook" />
+                    <MenuItem mnemonicParsing="false" onAction="#redirectToAddBook" text="Add Book" />
                     <MenuItem mnemonicParsing="false" onAction="#redirectToEditBook" text="Edit Book" />
                 </items>
             </Menu>
@@ -32,7 +31,7 @@
                     </ImageView>
                 </graphic>
                 <items>
-                    <MenuItem mnemonicParsing="false"  text="Add Users" />
+                    <MenuItem mnemonicParsing="false" text="Add Users" />
                     <MenuItem mnemonicParsing="false" onAction="#redirectToEditUser" text="Edit User" />
                 </items>
             </Menu>
@@ -51,11 +50,11 @@
             </Menu>
         </menus>
     </MenuBar>
-   <HBox layoutX="104.0" layoutY="130.0" prefHeight="463.0" prefWidth="730.0">
+   <HBox layoutX="57.0" layoutY="115.0" prefHeight="502.0" prefWidth="787.0">
       <children>
-         <HBox  id="add-form-user" prefHeight="528.0" prefWidth="453.0">
+         <HBox id="add-form-user" prefHeight="488.0" prefWidth="481.0">
             <children>
-               <VBox prefHeight="409.0" prefWidth="450.0">
+               <VBox prefHeight="502.0" prefWidth="521.0">
                   <children>
                      <VBox prefHeight="79.0" prefWidth="334.0">
                         <children>
@@ -68,9 +67,10 @@
                      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="314.0" prefWidth="470.0">
                        <columnConstraints>
                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="64.2" />
-                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="193.0" minWidth="10.0" prefWidth="133.39999999999998" />
-                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="83.39999999999998" minWidth="10.0" prefWidth="38.0" />
-                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.60000000000002" minWidth="10.0" prefWidth="147.60000000000002" />
+                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="193.0" minWidth="10.0" prefWidth="111.59999999999998" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="193.0" minWidth="10.0" prefWidth="74.40000000000003" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="83.39999999999998" minWidth="10.0" prefWidth="43.80000000000001" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="153.0" />
                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="72.99998474121094" minWidth="10.0" prefWidth="55.00001525878906" />
 
                        </columnConstraints>
@@ -91,38 +91,43 @@
                                   </font>
                               </Label>
                               <TextField fx:id="firstNameTextField" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Label prefHeight="18.0" prefWidth="150.0" text="LastName:" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                              <Label prefHeight="18.0" prefWidth="150.0" text="LastName:" GridPane.columnIndex="4" GridPane.rowIndex="2">
                                   <font>
                                       <Font size="19.0" />
                                   </font>
                               </Label>
-                              <TextField fx:id="lastNameTextField" prefWidth="186.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                              <TextField fx:id="lastNameTextField" prefWidth="186.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                               <Label prefWidth="150.0" text="CIN:" GridPane.columnIndex="1">
                                   <font>
                                       <Font size="16.0" />
                                   </font>
                               </Label>
                               <TextField fx:id="cinTextField" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label prefHeight="18.0" prefWidth="150.0" text="Email:" GridPane.columnIndex="3">
+                              <Label prefHeight="18.0" prefWidth="150.0" text="Email:" GridPane.columnIndex="4">
                                   <font>
                                       <Font size="17.0" />
                                   </font>
                               </Label>
-                              <TextField fx:id="emailTextField" prefWidth="186.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <TextField fx:id="emailTextField" prefWidth="186.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                               <Label prefWidth="150.0" text="Birth Date:" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                   <font>
                                       <Font size="19.0" />
                                   </font>
                               </Label>
                               <DatePicker fx:id="datePicker" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                 <Button contentDisplay="CENTER" onAction="#signIn" prefHeight="40.0" prefWidth="152.0" text="Add User" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                 <Button contentDisplay="CENTER" onAction="#signIn" prefHeight="40.0" prefWidth="152.0" text="Add User" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                            <Text fx:id="cinErrorText" fill="#cc2626" wrappingWidth="81.00000762939453" GridPane.columnIndex="2" />
+                           <Text fx:id="emailErrorText" fill="#c10b0b" layoutX="168.0" layoutY="37.0" wrappingWidth="65.00000762939453" GridPane.columnIndex="5" />
+                           <Text fx:id="lastNameErrorText" fill="#cc3333" layoutX="428.0" layoutY="37.0" wrappingWidth="139.0000457763672" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                            <Text fx:id="firstNameErrorText" fill="#b71b1b" wrappingWidth="75.99999237060547" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+
                         </children>
                      </GridPane>
                   </children>
                </VBox>
             </children>
          </HBox>
-         <HBox  id="userphoto" prefHeight="463.0" prefWidth="285.0" />
+         <HBox id="userphoto" prefHeight="502.0" prefWidth="305.0" />
       </children>
    </HBox>
 

@@ -29,9 +29,9 @@
     <Pane layoutX="25.0" layoutY="139.0" prefHeight="63.0" prefWidth="855.0">
 
         <children>
-            <TextField fx:id="searchTextNomField" onKeyReleased="#handleName" prefWidth="186.0" text="Name" />
-            <TextField fx:id="searchTextCINField" layoutX="421.0" onKeyReleased="#handleCIN" prefWidth="186.0" text="cin" />
-            <TextField fx:id="searchTextFamilyNameField" layoutX="214.0" onKeyReleased="#handleFamilyName" prefWidth="186.0" text="Family Name" />
+            <TextField fx:id="searchTextNomField" id="textfieldedit" onKeyReleased="#handleName" prefWidth="186.0" text="Name" />
+            <TextField fx:id="searchTextCINField"  id="textfieldedit" layoutX="421.0" onKeyReleased="#handleCIN" prefWidth="186.0" text="cin" />
+            <TextField fx:id="searchTextFamilyNameField" id="textfieldedit"  layoutX="214.0" onKeyReleased="#handleFamilyName" prefWidth="186.0" text="Family Name" />
 
 
         </children>
